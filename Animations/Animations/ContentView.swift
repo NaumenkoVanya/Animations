@@ -8,28 +8,73 @@
 import SwiftUI
 
 struct ContentView: View {
+    let letters = Array("Hello SwiftUI")
     @State private var animationAmount = 0.0
-    var body: some View {
-        // MARK: Создание явной анимации
+    @State private var enabled = false
+    @State private var dragAmount = CGSize.zero
 
-        Button("Tap ME") {
-//            withAnimation {
-//                animationAmount += 360
-//            }
-            withAnimation(.spring(duration: 1, bounce: 0.5)) {
-                animationAmount += 360
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(0..<letters.count, id: \.self) { num in
+                Text(String(letters[num]))
+                    .padding(5)
+                    .font(.title)
+                    .background(enabled ? .blue : .red)
+                    .offset(dragAmount)
+                    .animation(.linear.delay(Double(num) / 20), value: dragAmount)
             }
         }
-            .padding(50)
-            .background(Image("iconMotorbike")
-                .resizable()
-                .scaledToFit())
-            .foregroundStyle(.white)
-            .clipShape(.circle)
-            .rotation3DEffect(
-                .degrees(animationAmount),
-                axis: (x: 0, y: 1, z: 0)
-            )
+        .gesture(
+            DragGesture()
+                .onChanged{ dragAmount = $0.translation }
+                .onEnded { _ in
+                    dragAmount = .zero
+                    enabled.toggle()
+                }
+        )
+//        LinearGradient(colors: [.yellow, .red], startPoint: .topLeading, endPoint: .bottomLeading)
+//            .frame(width: 300, height: 200)
+//            .clipShape(.rect(cornerRadius: 10))
+//            .offset(dragAmount)
+//            .gesture(
+//                DragGesture()
+//                    .onChanged { dragAmount = $0.translation }
+//                    .onEnded{ _ in
+//                        withAnimation(.bouncy) {
+//                            dragAmount = .zero
+//                        }
+//                    }
+//            )
+            //.animation(.bouncy, value: dragAmount)
+        // MARK: Создание явной анимации
+
+//        Button("Tap Me More") {
+//            enabled.toggle()
+//        }
+//        .frame(width: 200, height: 200)
+//        .background(enabled ? .blue : .red)
+//        .animation(nil, value: enabled)
+//        .foregroundStyle(.white)
+//        .clipShape(.rect(cornerRadius: enabled ? 60 : 0))
+//        .animation(.spring(duration: 1, bounce: 0.6), value: enabled)
+//
+//        Button("Tap ME") {
+////            withAnimation {
+////                animationAmount += 360
+////            }
+//            withAnimation(.spring(duration: 1, bounce: 0.5)) {
+//                animationAmount += 360
+//            }
+//        }
+//        .padding(50)
+//        .background(.red)
+//        .foregroundStyle(.white)
+//        .clipShape(.circle)
+//        .rotation3DEffect(
+//            .degrees(animationAmount),
+//            axis: (x: 0, y: 1, z: 0)
+//        )
+//        .shadow(color: .green, radius: 10)
 
         // MARK: Aнимация привязок
 
