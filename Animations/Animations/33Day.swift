@@ -29,11 +29,11 @@ extension AnyTransition {
 struct _3Day: View {
     
     @State private var isShowingRed = false
-//
-//    let letters = Array("Hello SwiftUI")
-//    @State private var animationAmount = 0.0
-//    @State private var enabled = false
-//    @State private var dragAmount = CGSize.zero
+
+    let letters = Array("Hello SwiftUI")
+    @State private var animationAmount = 0.0
+    @State private var enabled = false
+    @State private var dragAmount = CGSize.zero
 
     
     var body: some View {
@@ -105,8 +105,8 @@ struct _3Day: View {
 //                        }
 //                    }
 //            )
-            //.animation(.bouncy, value: dragAmount)
-        // MARK: Создание явной анимации
+//            .animation(.bouncy, value: dragAmount)
+//         MARK: Создание явной анимации
 
 //        Button("Tap Me More") {
 //            enabled.toggle()
@@ -117,26 +117,26 @@ struct _3Day: View {
 //        .foregroundStyle(.white)
 //        .clipShape(.rect(cornerRadius: enabled ? 60 : 0))
 //        .animation(.spring(duration: 1, bounce: 0.6), value: enabled)
-//
-//        Button("Tap ME") {
-////            withAnimation {
-////                animationAmount += 360
-////            }
-//            withAnimation(.spring(duration: 1, bounce: 0.5)) {
-//                animationAmount += 360
-//            }
-//        }
-//        .padding(50)
-//        .background(.red)
-//        .foregroundStyle(.white)
-//        .clipShape(.circle)
-//        .rotation3DEffect(
-//            .degrees(animationAmount),
-//            axis: (x: 0, y: 1, z: 0)
-//        )
-//        .shadow(color: .green, radius: 10)
 
-        // MARK: Aнимация привязок
+        Button("Tap ME") {
+            withAnimation {
+                animationAmount += 360
+            }
+            withAnimation(.spring(duration: 1, bounce: 0.5)) {
+                animationAmount += 360
+            }
+        }
+        .padding(50)
+        .background(.red)
+        .foregroundStyle(.white)
+        .clipShape(.circle)
+        .rotation3DEffect(
+            .degrees(animationAmount),
+            axis: (x: 0, y: 1, z: 0)
+        )
+        .shadow(color: .green, radius: 10)
+
+//         MARK: Aнимация привязок
 
 //        VStack {
 //            Spacer()
@@ -157,22 +157,22 @@ struct _3Day: View {
 //        }
 //        .padding()
 
-        // MARK: настройка анимации SwiftUI
+//         MARK: настройка анимации SwiftUI
 
 //        VStack {
 //            Button("Tap Me") {
-        ////                animationAmount += 1
+//        //                animationAmount += 1
 //            }
 //            .padding(50)
 //            .background(.red)
 //            .foregroundStyle(.white)
 //            .clipShape(.circle)
-        ////            .scaleEffect(animationAmount)
-        ////            .blur(radius: (animationAmount - 1) * 3)
-        ////            .animation(.spring(duration: 1, bounce: 0.9), value: animationAmount)
-        ////            .animation(.easeInOut(duration: 2)
-        ////                .delay(1),
-        ////                value: animationAmount)
+        //            .scaleEffect(animationAmount)
+        //            .blur(radius: (animationAmount - 1) * 3)
+        //            .animation(.spring(duration: 1, bounce: 0.9), value: animationAmount)
+        //            .animation(.easeInOut(duration: 2)
+        //                .delay(1),
+        //                value: animationAmount)
 //            .overlay(
 //                Circle()
 //                    .stroke(.red)
